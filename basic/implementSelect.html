@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>An Realization Of Select With Ul+Li+JS</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+
+	<div id='wrapper' >
+		<div id='prev'>==请选择早餐=<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></div>
+		<ol id='options'>
+		</ol>
+	</div>
+
+	<style type="text/css">
+		#wrapper{
+			
+		}
+		#prev{
+			border:.15em solid green;
+			border-radius: 5px;
+			text-align: center;
+			width:150px;
+			position:relative;
+			left: 20px;
+
+		}
+		#prev:hover{
+			cursor: pointer;
+		}
+
+		li{
+			display: none;
+			width:150px;
+			left: 5px;
+		}
+		li:hover{
+			cursor: pointer;
+			font-size: 1.1em;
+		}
+		li:hover:before{
+			content:'\25BA ';
+		}
+	</style>
+	
+	<script type="text/javascript">
+		var data=[
+			{"val":"1","text":" 豆浆"},
+			{"val":"2","text":" 油条"},
+			{"val":"3","text":" 牛奶"},
+			{"val":"4","text":" 鸡蛋"}]
+		var s = $('#options');
+		for(let x =0;x<data.length;x++)
+		{
+			var l = document.createElement('li');
+			l.value=data[x].val;
+			l.innerText =data[x].text;
+			s.append(l);
+		}
+
+		$('#prev').click(function(){
+			$('li').slideToggle('fast');
+		})
+		// $('#wrapper').not('#prev').click(function(){
+		// 	alert('x');
+		// 	$('li').slideUp('fast');
+		// });
+		$('#wrapper').on('click','li',function(e){
+			//alert('你选择了'+e.target.value+'号食物: '+this.innerText)
+			$('#prev').html( e.target.innerText+'<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>');
+			$('li').slideUp('fast');
+		})
+	</script>
+</body>
+</html>
