@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="javascript:alert('xxx');" class="add"></a>
+    <style>
+        .add {
+            width: 60px;
+            height: 60px;
+            border: 1px;
+            border-style: solid;
+            color: black;
+            display: inline-block;
+            left:50px;
+            top:120px;
+        }
+        .add:hover{
+            color: blue;
+        }
+        .add:after {
+            content: "";
+            height: 40px;
+            border-width: 0 9px 0 0;
+            border-style: solid;
+            position: relative;
+            display: inline-block;
+            top: 9px;
+            left: -15px;
+        }
+        .add:before {
+            content: "";
+            width: 40px;
+            border-width: 9px 0 0 0;
+            border-style: solid;
+            position: relative;
+            display: inline-block;
+            top: -6px;  
+            left: 10px;
+        }
+    </style>
+</body>
+</html>
