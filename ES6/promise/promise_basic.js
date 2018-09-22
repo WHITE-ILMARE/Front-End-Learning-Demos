@@ -8,4 +8,7 @@ const promise = new Promise(function(resolve,reject){
 promise.then(function(){
     console.log('success');
 });
-console.log('hello');
+
+const promise_err = new Promise(function(resolve,reject){
+    throw new Error('reject can catch error');
+}).then(null,function(error){console.log('xxx,'+error);})
