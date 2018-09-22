@@ -20,12 +20,9 @@ function getText(url){
         }
         //reject(new Error(xhr.status));
     })
-    promise1.then(
-        function(data){
-            console.log('resolved,response Text:'+data);
-        },function(type){
-            console.log('rejected,response type:'+type);
-    })
+    promise1.then(data=>console.log('resolved,response Text:'+data))
+        .catch(type=>console.log('rejected,response type:'+type))
+
 }
 getText('http://127.0.0.1:8888/1.txt')
 getText('http://127.0.0.1:8888/1.jpg')
