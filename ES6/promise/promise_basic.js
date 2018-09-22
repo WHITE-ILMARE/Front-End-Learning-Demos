@@ -7,7 +7,8 @@ const promise = new Promise(function(resolve,reject){
 });
 promise.then(function(){
     console.log('success');
-});
+    //return 'what?';
+}).then(data=>console.log(data));
 
 const promise_err = new Promise(function(resolve,reject){
     throw new Error('reject can catch error');
