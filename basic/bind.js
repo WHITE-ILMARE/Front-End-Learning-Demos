@@ -24,6 +24,7 @@ Function.prototype.fullbind = function(context)
         //用apply不用call因为apply第二个参数是数组，不用转化为一个个参数
         //作为构造函数使用时，构造函数内this指向新建的对象
         //不作为构造函数使用时，this指向window或undefined，就设置this为context
+        //就是作为构造函数使用时，传进来的参数上下文被新建的对象取代了，参数上下文完全没有用
         return self.apply(this instanceof funbind?this:context,beforeargs);
     }
     //使用一个空函数保存调用函数的原型，再将原型赋给返回的函数的原型
