@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.set 全局操作</title>
+    <script src="../vue.js">
+        
+    </script>
+</head>
+<body>
+    <h2>最新的VUE似乎修正了这个问题：在使用外部方法改变data中的值时不能触发DOM更新的问题</h2>
+    <hr>
+    <div id="app">
+        {{count}}
+        <li v-for='item in obj'>{{item}}</li>
+        <hr>
+        <li v-for="item in arr">{{item}}</li>
+    </div>
+    <p><button onclick="add()">+</button></p>
+    <script>
+        function add(){
+            app.obj[2]='rrr';
+            app.arr[1]='???';
+            //outData.count++;
+            //Vue.set(outData,'count',2);
+        }
+        var outData = {
+            count:1,
+            obj:{
+                1:'q',
+                2:'w',
+                3:'e'
+            },
+            arr:['a','b','c']
+        }
+        var app = new Vue({
+            el:'#app',
+            data:outData
+        })
+    </script>
+</body>
+</html>

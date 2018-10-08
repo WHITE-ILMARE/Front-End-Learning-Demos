@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Customize Direction</title>
+</head>
+<body>
+    <div id="app">
+        <div v-direction="color">{{num}}</div>
+        <p><button @click="add">add</button></p>
+    </div>
+    <p><button onclick="unbind()">unbind</button></p>
+    <script>
+        function unbind(){
+            app.$destroy();
+        }
+
+        Vue.directive("direction",{
+            bind:function(el,binding){//开始绑定vue实例和dom节点
+                console.log('bind,ok');
+                el.style = "color:"+binding.value;
+            },
+            inserted:function(){//绑定完成
+                console.log('inserted,ok');
+            },
+            update:function(){//开始组件更新
+                console.log('update ok');
+            },
+            componentUpdated:function(){//组件更新完成
+                console.log('component update ok');
+            },
+            unbind:function(){//解绑
+                console.log('unbind ok');
+            }
+
+        })
+
+        var app = new Vue({
+            el:"#app",
+            data:{
+                num:1,
+                color:'green'
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
