@@ -19,7 +19,7 @@
         }
 
         Vue.directive("direction",{
-            bind:function(el,binding){//开始绑定vue实例和dom节点
+            bind:function(el,binding){//开始绑定vue实例和dom节点,el:指令所在的dom对象；bingding:绑定的值
                 console.log('bind,ok');
                 el.style = "color:"+binding.value;
             },
