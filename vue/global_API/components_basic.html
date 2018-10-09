@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Basic Component Usage</title>
+</head>
+<body>
+    <div id="app">
+        <self-define argument-r="arg2"></self-define>
+        <self-define2></self-define2>
+        <component :is="which"></component>
+        <button @click="change">?</button>
+    </div>
+
+    <script>
+        var outSelfDefine = {
+            template:`<div style="color:green">This is a self define label outside</div>`
+        }
+        var faSelfDefine = {
+            template:`
+            <div>
+                this is father component
+                <child></child>
+            </div>`,
+            components:{
+                "child":outSelfDefine
+            }
+        }
+        var coma = {
+            template:`<p>componentA</p>`
+        }
+        var comb = {
+            template:`<p>componentB</p>`
+        }
+        var comc = {
+            template:`<p>componentC</p>`
+        }
+        var app = new Vue({
+            el:'#app',
+            data:{
+                "which":"coma"
+            },
+            components:{
+                "selfDefine":{
+                    props:["argumentR"],
+                    template:`<div style="color:red">{{argumentR}}</div>`
+                },
+                "selfDefine2":faSelfDefine,
+                "coma":coma,
+                "comb":comb,
+                "comc":comc
+            },
+            methods:{
+                "change":function(){
+                    this.which==='coma'?this.which='comb':(this.which==='comb'?this.which=comc:this.which='coma');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
