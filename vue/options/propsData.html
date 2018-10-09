@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>propsData选项</title>
+</head>
+<body>
+    <h2>用于全局扩展时进行传递数据</h2>
+    <hr>
+    <extention1></extention1>
+    <script>
+        var extension = Vue.extend({
+            template:`<p>{{message}}{{xx}}</p>`,
+            data:function(){
+                return {
+                    "message":"创建实例时传入的参数:"
+                }
+            },
+            props:['xx']
+        })
+        new extension({propsData:{
+            "xx":'???'
+        }}).$mount("extention1");
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>methods选项中元素参数的问题</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <template id="temp">
+            <div 
+            style="background-color:grey;width:1200px;height:300px;line-height:300px;text-align: center;font-size: 48px"
+            @mousemove="move($event)"
+             >
+             {{count}}
+             </div>
+    </template>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            template:"#temp",
+            data:{
+                'count':0,
+                'timeout':null
+            },
+            methods:{
+                "move":function(e){
+                    var self = this;
+                    if(this.timeout) clearTimeout(this.timeout);
+                    this.timeout = setTimeout(function(){
+                        self.count++;
+                        console.log(e)
+                    },1000);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
