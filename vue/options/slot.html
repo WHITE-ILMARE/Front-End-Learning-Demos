@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js"></script>
+    <title>Slot</title>
+</head>
+<body>
+    <div id="app">
+        <test>
+            <li slot = 'one'>{{test[0]}}</li>
+            <li slot = 'two'>{{test[1]}}</li>
+            <li slot='three'>{{test[2]}}</li>
+        </test>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                test:['test','data','array']
+            },
+            components:{
+                "test":{
+                    template:`
+                    <ul>
+                        <slot name='one'></slot>
+                        <slot name= 'two'></slot>
+                        <slot name= 'three'></slot>    
+                    </ul>
+                    `
+                }
+            }
+        })
+    </script>
+</body>
+</html>
